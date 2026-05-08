@@ -1,0 +1,26 @@
+
+name: Build Installer
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Inno Setup
+        run: choco install innosetup --yes
+
+      - name: Build EXE
+        shell: cmd
+        run: |
+          "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" RVT2CNC_Setup.iss
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: RVT2CNC_Setup
+          path: Output/RVT2CNC_Setup.exe
