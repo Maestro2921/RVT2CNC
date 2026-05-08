@@ -81,7 +81,7 @@ Expand-Archive -Path $LocalZip -DestinationPath $extract -Force
 UpdateUI "Pluginmap zoeken..." 40
 
 $pluginDir = Get-ChildItem -Path $extract -Recurse -Directory | Where-Object {
-    $_.Name -ieq "Revit2CNC.extension" -or
+    $_.Name -ieq "RVT2CNC.extension" -or
     $_.Name -ieq "RVT2CNC.extension"
 } | Select-Object -First 1
 
